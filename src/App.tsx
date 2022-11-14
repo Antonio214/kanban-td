@@ -1,3 +1,10 @@
+import {
+  ChangeEventHandler,
+  FormEventHandler,
+  KeyboardEventHandler,
+  useState,
+} from "react";
+
 function App() {
   const data = [
     { description: "Tarefa 1", done: true },
@@ -5,16 +12,40 @@ function App() {
     { description: "Tarefa 3", done: false },
   ];
 
+  const [label, setLabel] = useState("");
+  const [todoItens, setTodoItens] = useState(data);
+
+  const handleSubmit: KeyboardEventHandler<HTMLInputElement> = (event) => {
+    if (event.key === "Enter") {
+      const newItem = {
+        description: label,
+        done: false,
+      };
+
+      setTodoItens([newItem, ...todoItens]);
+      setLabel("");
+    }
+  };
+
+  const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    setLabel(event.target.value);
+  };
+
   return (
     <div className="App">
       <h1>TODO:</h1>
-      {data.map((item, index) => (
-        <div>
+      {todoItens.map((item, index) => (
+        <div key={index}>
           <input type={"checkbox"} checked={item.done}></input>
-          <text key={index}>{item.description}</text>
+          <div>{item.description}</div>
         </div>
       ))}
-      <input type={"text"}></input>
+      <input
+        value={label}
+        onChange={handleChange}
+        onKeyUp={handleSubmit}
+        type={"text"}
+      />
     </div>
   );
 }
