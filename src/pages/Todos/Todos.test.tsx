@@ -7,9 +7,9 @@ describe("Testing Todos Page:", () => {
     it("Should render 3 itens", () => {
       const mockData = { description: "Tarefa Mock" };
 
-      const initialData = new TodoList([mockData, mockData, mockData]);
+      const todoList = new TodoList([mockData, mockData, mockData]);
 
-      render(<Todos initialData={initialData}></Todos>);
+      render(<Todos todoList={todoList}></Todos>);
 
       expect(screen.getAllByRole("listitem")).toHaveLength(3);
     });
@@ -17,7 +17,7 @@ describe("Testing Todos Page:", () => {
     it("Should render 10 itens", () => {
       const mockData = { description: "Tarefa Mock" };
 
-      const initialData = new TodoList([
+      const todoList = new TodoList([
         mockData,
         mockData,
         mockData,
@@ -30,15 +30,15 @@ describe("Testing Todos Page:", () => {
         mockData,
       ]);
 
-      render(<Todos initialData={initialData}></Todos>);
+      render(<Todos todoList={todoList}></Todos>);
 
       expect(screen.getAllByRole("listitem")).toHaveLength(10);
     });
 
     it("should render no data message as h2 tag", () => {
-      const initialData = new TodoList([]);
+      const todoList = new TodoList([]);
 
-      render(<Todos initialData={initialData}></Todos>);
+      render(<Todos todoList={todoList}></Todos>);
 
       const h2Array = screen.getAllByRole("heading", { level: 2 });
       const emptyMessageArray = screen.getAllByText(

@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import TextInput from "../../components/TextInput";
 import TodosSection from "./components/TodosSection";
-import { TodoItem, canCreateTodo } from "../../Entities/TodoItem";
+import { canCreateTodo, TodoItem } from "../../Entities/TodoItem";
 import { TodoList } from "../../Entities/TodoList";
+import { useSubscribeTo } from "../../hooks/useSubscribeTo";
 
 type Props = {
-  initialData: TodoList;
+  todoList: TodoList;
 };
 
-const Todos = ({ initialData }: Props) => {
+const Todos = ({ todoList }: Props) => {
   const [label, setLabel] = useState("");
-  const [todoItens, setTodoItens] = useState<TodoList>(initialData);
+  const [todoItens] = useSubscribeTo<TodoItem>(todoList);
 
   const handleSubmit = () => {
     const data = {
@@ -18,8 +19,7 @@ const Todos = ({ initialData }: Props) => {
     };
 
     if (canCreateTodo(data)) {
-      todoItens.addItem(data);
-      setTodoItens(todoItens);
+      todoList.addItem(data);
       setLabel("");
     }
   };
@@ -32,7 +32,7 @@ const Todos = ({ initialData }: Props) => {
     <div>
       <div className="App">
         <h1>TODO:</h1>
-        <TodosSection todoItens={todoItens.itens}></TodosSection>
+        <TodosSection todoItens={todoItens}></TodosSection>
         <TextInput
           value={label}
           changeCallback={handleChange}

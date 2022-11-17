@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Observable } from "../Entities/Observable";
+import { ObservableList } from "../Entities/ObservableList";
 
-export function useSubscribeTo<T>(observable: Observable) {
-  const [value, setValue] = useState<T>();
+export function useSubscribeTo<T>(observable: ObservableList<T>) {
+  const [value, setValue] = useState<T[]>(observable.itens);
 
-  const onUpdate = (valueToUpdate: T) => {
+  const onUpdate = (valueToUpdate: T[]) => {
     setValue(valueToUpdate);
   };
 
