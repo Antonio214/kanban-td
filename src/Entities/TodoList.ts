@@ -12,5 +12,10 @@ export class TodoList extends Observable {
   addItem(data: TodoData) {
     const item = new TodoItem(data);
     this.itens = [item, ...this.itens];
+    this.notify(this.itens);
+  }
+
+  protected notify(data: TodoItem[]) {
+    super.notify(data);
   }
 }

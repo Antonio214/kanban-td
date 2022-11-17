@@ -1,4 +1,4 @@
-export type Observer = () => void;
+export type Observer = (data: any) => void;
 
 export abstract class Observable {
   private observers: Observer[] = [];
@@ -13,7 +13,7 @@ export abstract class Observable {
     );
   }
 
-  protected notify() {
-    this.observers.forEach((observer) => observer());
+  protected notify(data: any) {
+    this.observers.forEach((observer) => observer(data));
   }
 }
