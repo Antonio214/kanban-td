@@ -18,7 +18,9 @@ function TodosSection({ todoItens }: Props) {
           <input
             type={"checkbox"}
             checked={item.isDone}
-            onChange={() => {}}
+            onChange={() => {
+              item.toogleComplete();
+            }}
           ></input>
           <div>{item.description}</div>
         </div>
