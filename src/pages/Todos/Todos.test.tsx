@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { createTodo, TodoItem } from "../../Entities/TodoItem";
+import { TodoItem } from "../../Entities/TodoItem";
 import { Todos } from "./Todos";
 
 describe("Testing Todos Page:", () => {
@@ -8,9 +8,9 @@ describe("Testing Todos Page:", () => {
       const mockData = { description: "Tarefa Mock" };
 
       const initialData = [
-        createTodo(mockData),
-        createTodo(mockData),
-        createTodo(mockData),
+        new TodoItem(mockData),
+        new TodoItem(mockData),
+        new TodoItem(mockData),
       ];
 
       render(<Todos initialData={initialData}></Todos>);
@@ -22,16 +22,16 @@ describe("Testing Todos Page:", () => {
       const mockData = { description: "Tarefa Mock" };
 
       const initialData = [
-        createTodo(mockData),
-        createTodo(mockData),
-        createTodo(mockData),
-        createTodo(mockData),
-        createTodo(mockData),
-        createTodo(mockData),
-        createTodo(mockData),
-        createTodo(mockData),
-        createTodo(mockData),
-        createTodo(mockData),
+        new TodoItem(mockData),
+        new TodoItem(mockData),
+        new TodoItem(mockData),
+        new TodoItem(mockData),
+        new TodoItem(mockData),
+        new TodoItem(mockData),
+        new TodoItem(mockData),
+        new TodoItem(mockData),
+        new TodoItem(mockData),
+        new TodoItem(mockData),
       ];
 
       render(<Todos initialData={initialData}></Todos>);

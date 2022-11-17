@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TextInput from "../../components/TextInput";
 import TodosSection from "./components/TodosSection";
-import { TodoItem, canCreateTodo, createTodo } from "../../Entities/TodoItem";
+import { TodoItem, canCreateTodo } from "../../Entities/TodoItem";
 
 type Props = {
   initialData: TodoItem[];
@@ -17,7 +17,7 @@ const Todos = ({ initialData }: Props) => {
     };
 
     if (canCreateTodo(data)) {
-      const newItem = createTodo(data);
+      const newItem = new TodoItem(data);
       setTodoItens([newItem, ...todoItens]);
       setLabel("");
     }

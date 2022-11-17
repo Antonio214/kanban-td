@@ -2,10 +2,15 @@ export type TodoData = {
   description: string;
 };
 
-export type TodoItem = {
+export class TodoItem {
   description: string;
   isDone: boolean;
-};
+
+  constructor({ description }: TodoData) {
+    this.description = description;
+    this.isDone = false;
+  }
+}
 
 export function canCreateTodo({ description }: TodoData) {
   if (description !== "") {
@@ -13,13 +18,4 @@ export function canCreateTodo({ description }: TodoData) {
   }
 
   return false;
-}
-
-export function createTodo({ description }: TodoData): TodoItem {
-  const newItem: TodoItem = {
-    description: description,
-    isDone: false,
-  };
-
-  return newItem;
 }
