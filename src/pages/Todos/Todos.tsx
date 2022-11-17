@@ -28,11 +28,18 @@ const Todos = ({ todoList }: Props) => {
     setLabel(value);
   };
 
+  const handleDelete = (id: number) => {
+    todoList.removeItem(id);
+  };
+
   return (
     <div>
       <div className="App">
         <h1>TODO:</h1>
-        <TodosSection todoItens={todoItens}></TodosSection>
+        <TodosSection
+          todoItens={todoItens}
+          deleteCallback={handleDelete}
+        ></TodosSection>
         <TextInput
           value={label}
           changeCallback={handleChange}
