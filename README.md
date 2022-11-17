@@ -7,5 +7,5 @@ A kanban project to be use on a daily bases of any project for free
 [] Create a CRUD TODO with tests
 
 - [x] Create a simple todo view
-- [ ] Create base logic
+- [x] Create base logic
 - [ ] Refactor
