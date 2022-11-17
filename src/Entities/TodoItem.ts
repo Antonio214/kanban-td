@@ -1,14 +1,19 @@
 export type TodoData = {
   description: string;
+  isDone?: boolean;
 };
 
 export class TodoItem {
   description: string;
   isDone: boolean;
 
-  constructor({ description }: TodoData) {
+  constructor({ description, isDone }: TodoData) {
     this.description = description;
-    this.isDone = false;
+    this.isDone = isDone ?? false;
+  }
+
+  toogleComplete() {
+    this.isDone = !this.isDone;
   }
 }
 
