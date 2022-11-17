@@ -1,9 +1,11 @@
+import { Observable } from "./Observable";
 import { TodoData, TodoItem } from "./TodoItem";
 
-export class TodoList {
+export class TodoList extends Observable {
   itens: TodoItem[];
 
   constructor(itensData: TodoData[]) {
+    super();
     this.itens = itensData.map((data) => new TodoItem(data));
   }
 
