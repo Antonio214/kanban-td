@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { TodoItem } from "../../Entities/TodoItem";
+import { TodoList } from "../../Entities/TodoList";
 import { Todos } from "./Todos";
 
 describe("Testing Todos Page:", () => {
@@ -7,11 +7,7 @@ describe("Testing Todos Page:", () => {
     it("Should render 3 itens", () => {
       const mockData = { description: "Tarefa Mock" };
 
-      const initialData = [
-        new TodoItem(mockData),
-        new TodoItem(mockData),
-        new TodoItem(mockData),
-      ];
+      const initialData = new TodoList([mockData, mockData, mockData]);
 
       render(<Todos initialData={initialData}></Todos>);
 
@@ -21,18 +17,18 @@ describe("Testing Todos Page:", () => {
     it("Should render 10 itens", () => {
       const mockData = { description: "Tarefa Mock" };
 
-      const initialData = [
-        new TodoItem(mockData),
-        new TodoItem(mockData),
-        new TodoItem(mockData),
-        new TodoItem(mockData),
-        new TodoItem(mockData),
-        new TodoItem(mockData),
-        new TodoItem(mockData),
-        new TodoItem(mockData),
-        new TodoItem(mockData),
-        new TodoItem(mockData),
-      ];
+      const initialData = new TodoList([
+        mockData,
+        mockData,
+        mockData,
+        mockData,
+        mockData,
+        mockData,
+        mockData,
+        mockData,
+        mockData,
+        mockData,
+      ]);
 
       render(<Todos initialData={initialData}></Todos>);
 
@@ -40,7 +36,7 @@ describe("Testing Todos Page:", () => {
     });
 
     it("should render no data message as h2 tag", () => {
-      const initialData: TodoItem[] = [];
+      const initialData = new TodoList([]);
 
       render(<Todos initialData={initialData}></Todos>);
 

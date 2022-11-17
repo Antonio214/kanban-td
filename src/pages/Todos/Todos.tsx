@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import TextInput from "../../components/TextInput";
 import TodosSection from "./components/TodosSection";
 import { TodoItem, canCreateTodo } from "../../Entities/TodoItem";
+import { TodoList } from "../../Entities/TodoList";
 
 type Props = {
-  initialData: TodoItem[];
+  initialData: TodoList;
 };
 
 const Todos = ({ initialData }: Props) => {
   const [label, setLabel] = useState("");
-  const [todoItens, setTodoItens] = useState<TodoItem[]>(initialData);
+  const [todoItens, setTodoItens] = useState<TodoList>(initialData);
 
   const handleSubmit = () => {
     const data = {
@@ -17,8 +18,8 @@ const Todos = ({ initialData }: Props) => {
     };
 
     if (canCreateTodo(data)) {
-      const newItem = new TodoItem(data);
-      setTodoItens([newItem, ...todoItens]);
+      todoItens.addItem(data);
+      setTodoItens(todoItens);
       setLabel("");
     }
   };
@@ -31,7 +32,7 @@ const Todos = ({ initialData }: Props) => {
     <div>
       <div className="App">
         <h1>TODO:</h1>
-        <TodosSection todoItens={todoItens}></TodosSection>
+        <TodosSection todoItens={todoItens.itens}></TodosSection>
         <TextInput
           value={label}
           changeCallback={handleChange}
