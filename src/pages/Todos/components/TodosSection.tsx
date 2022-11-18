@@ -1,5 +1,6 @@
 import React from "react";
 import { TodoItem } from "../../../Entities/TodoItem";
+import TodoCard from "./TodoCard/TodoCard";
 
 type Props = {
   todoItens: TodoItem[];
@@ -16,15 +17,11 @@ function TodosSection({ todoItens, deleteCallback }: Props) {
       )}
       {todoItens.map((item, index) => (
         <div role="listitem" key={index}>
-          <input
-            type={"checkbox"}
-            checked={item.isDone}
-            onChange={() => {
-              item.toogleComplete();
-            }}
-          ></input>
-          <div>{item.description}</div>
-          <button onClick={() => deleteCallback(item.id)}>Remover</button>
+          <TodoCard
+            itemData={item}
+            deleteCallback={deleteCallback}
+            changeCallback={() => {}}
+          ></TodoCard>
         </div>
       ))}
     </section>

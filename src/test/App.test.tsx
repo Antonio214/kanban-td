@@ -1,5 +1,6 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
+import userEvent from "@testing-library/user-event";
 
 import App from "../App";
 
@@ -29,4 +30,17 @@ describe("Testing App component", () => {
       expect(screen.getByRole("textbox")).toBeInTheDocument();
     });
   });
+
+  // TODO: come back here after testing TODO item
+  // describe("Testing deleting data", () => {
+  //   it("Should delete one item", () => {
+  //     const user = userEvent.setup();
+  //     render(<App />);
+
+  //     const firstTodoItem = screen.getAllByRole("listitem")[0];
+
+  //     console.log(within(firstTodoItem).getByRole("button"));
+  //     expect(false).toBe(true);
+  //   });
+  // });
 });
